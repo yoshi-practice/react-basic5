@@ -1,19 +1,23 @@
 import React, {Component} from 'react';
+import Child from './Child';
 
 class App extends Component{
   constructor(props){
     super(props);
 
     this.state = {
-      A: "A"
-    }
+      parentValue: 100
+    };
+  }
+
+  addValueParent(value){
+    const newValue = this.state.parentValue + value;
+    this.setState({parentValue: newValue});
   }
 
   render(){
     return(
-      <div>
-        <p>{this.state.A}</p>
-      </div>
+      <Child pval={this.state.parentValue} add={this.addValueParent.bind(this)}></Child>
     )
   }
 }
